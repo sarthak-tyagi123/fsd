@@ -1,0 +1,16 @@
+.main-div{
+    display: flex;
+    justify-content: center; 
+    align-items: center;   
+    height: 100vh; 
+}
+
+.passkey{
+    height: 300px;
+    width: 300px;
+    border: 2px solid black;
+    displ
+    justify-content: center;
+    align-items: center;
+
+}

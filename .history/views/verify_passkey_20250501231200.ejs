@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>verify passkey</title>
+  <link rel="stylesheet" href="./stylesheet/verify_passkey.css">
+</head>
+<body>
+
+  <div class="main-div">
+    <form id="passkeyForm">
+      <div class="passkey">
+        <input type="text" class="passkeybox1" placeholder="Enter partner 1 passkey"><br>
+        <!-- <input type="text" class="passkeybox2" placeholder="Enter partner 2 passkey"><br> -->
+        <button type="submit" class="submitbutton">Start Chatting</button>
+      </div>
+    </form>
+  </div>
+
+  <script>
+
+    const storedPasskey = sessionStorage.getItem('chat-Passkey');
+
+    
+    const passkeyForm = document.getElementById('passkeyForm');
+    const passkeybox1 = document.querySelector('.passkeybox1');
+    const passkeybox2 = document.querySelector('.passkeybox2');
+
+    passkeyForm.addEventListener('submit', function(event) {
+      event.preventDefault();
+
+      const passkey1 = passkeybox1.value.trim();
+      const passkey2 = passkeybox2.value.trim();
+      const Created_Passkey = passkey1+passkey2;
+
+      if (Created_Passkey === storedPasskey) 
+      {
+        // Combine both passkeys or handle however needed
+        
+        window.location.href = `/chat?room=${encodeURIComponent(room)}`;
+      } 
+      
+      else {
+        alert("Please verify both passkeys to start chatting");
+      }
+
+    });
+
+
+    
+  </script>
+
+</body>
+</html>

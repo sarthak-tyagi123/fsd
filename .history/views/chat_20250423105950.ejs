@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Chat Here</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      display: flex;
+      flex-direction: column;
+      height: 100vh;
+      background-color: #f0f2f5;
+    }
+
+    header {
+      padding: 1rem;
+      background-color: #4a90e2;
+      color: white;
+      text-align: center;
+      font-size: 1.5rem;
+      font-weight: bold;
+    }
+
+    main {
+      flex: 1;
+      padding: 1rem;
+      overflow-y: auto;
+      margin-bottom: 70px; /* space for the fixed input bar */
+    }
+
+    .chat_input {
+      display: flex;
+      padding: 10px;
+      background-color: white;
+      border-top: 1px solid #ccc;
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+    }
+
+    .chat-input {
+      flex: 1;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 20px;
+      font-size: 1rem;
+      outline: none;
+    }
+
+    .submit-button {
+      padding: 10px 20px;
+      margin-left: 10px;
+      background-color: #4a90e2;
+      color: white;
+      border: none;
+      border-radius: 20px;
+      cursor: pointer;
+      font-size: 1rem;
+      transition: background-color 0.3s ease;
+    }
+
+    .submit-button:hover {
+      background-color: #357ab8;
+    }
+  </style>
+</head>
+<body>
+  <header>Chat Here</header>
+
+
+<form action="" method="post">
+
+  <div class="chat_input">
+    <input type="text" class="chat-input" placeholder="Type your message..." />
+    <button class="submit-button">Submit</button>
+  </div>
+
+</form>
+
+
+
+
+  <script src="https://cdn.socket.io/4.8.1/socket.io.min.js" 
+    integrity="sha384-mkQ3/7FUtcGyoppY6bz/PORYoGqOl7/aSUMn2ymDOJcapfS6PHqxhRTMh1RR0Q6+" 
+    crossorigin="anonymous">
+  </script>
+
+
+  <script>
+
+    let room;
+    const socket=io();
+    socket.emit("join room");
+    socket.on("joined",function(roomname)
+
+  {
+
+    room=roomname;
+
+  })
+
+
+
+    // writing the code for input box...............................
+
+
+
+
+    const chat_input=document.querySelector(".chat_input")
+
+
+    chat_input.addEventListener("submit",function(event)
+
+  {
+    event.preventDefault();
+
+    socket.emit("message",)
+    
+  })
+
+   
+   
+  </script>
+  
+
+
+</body>
+</html>

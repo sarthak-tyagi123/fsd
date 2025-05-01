@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Passkey for Chat</title>
+  <link rel="stylesheet" href="./stylesheet/passkey.css">
+</head>
+<body>
+
+  <div class="main-div">
+
+    <form id="passkeyForm">
+      <div class="passkey">
+        <input type="text" name="text" class="passkeybox" placeholder="Create your room passkey"><br>
+        <input type="submit" class="submitbutton">
+      </div>
+    </form>
+
+  </div>
+
+
+
+  <script>
+    const passkeyForm = document.getElementById('passkeyForm');
+    const passkeybox = document.querySelector('.passkeybox');
+
+    passkeyForm.addEventListener('submit', function(event) {
+      event.preventDefault(); // Prevent form's default behavior
+      const passkey = passkeybox.value.trim();
+      if (passkey) {
+        
+        sessionStorage.setItem('chatPasskey', passkey);
+        window.location.href = `/verify_passkey?room=${encodeURIComponent(passkey)}`;
+      } else {
+        alert("Please enter the passkey");
+      }
+
+    });
+
+
+    
+
+  </script>
+
+</body>
+</html>

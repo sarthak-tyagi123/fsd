@@ -1,0 +1,81 @@
+
+.main-div{
+    display: flex;
+    justify-content: center; 
+    align-items: center;   
+    height: 100vh; 
+}
+
+.passkey{
+    height: 300px;
+    width: 300px;
+    border: 2px solid black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+
+* {
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  }
+
+  body {
+    margin: 0;
+    padding: 0;
+    background-color: white; /* full-page white background */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+  }
+
+  .main-div {
+    background-color: #f8f8f8;  /* Light gray for card effect */
+    padding: 2rem;
+    border-radius: 1rem;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+    width: 90%;
+    max-width: 400px;
+  }
+
+  .passkey {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .passkeybox1 {
+    padding: 0.75rem;
+    font-size: 1rem;
+    border-radius: 0.5rem;
+    border: 1px solid #ccc;
+    outline: none;
+    transition: 0.2s;
+  }
+
+
+
+  
+  .passkeybox:focus {
+    border-color: #5b76f7;
+    box-shadow: 0 0 5px rgba(91, 118, 247, 0.5);
+  }
+
+  .submitbutton {
+    padding: 0.75rem;
+    font-size: 1rem;
+    background-color: #5b76f7;
+    color: white;
+    border: none;
+    border-radius: 0.5rem;
+    cursor: pointer;
+    transition: background-color 0.2s;
+  }
+
+  .submitbutton:hover {
+    background-color: #3f5ce0;
+  }
+

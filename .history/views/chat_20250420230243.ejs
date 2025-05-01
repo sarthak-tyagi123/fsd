@@ -1,0 +1,80 @@
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Fixed Input and Submit</title>
+  <style>
+    body {
+      margin: 0;
+      padding-bottom: 60px; /* space for bottom bar */
+      font-family: Arial, sans-serif;
+    }
+
+    .bottom-bar {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      padding: 10px;
+      background-color: #f0f0f0;
+      border-top: 1px solid #ccc;
+      display: flex;
+      gap: 10px;
+      box-shadow: 0 -2px 5px rgba(0,0,0,0.1);
+    }
+
+    .bottom-bar input {
+      flex: 1;
+      padding: 10px;
+      font-size: 16px;
+    }
+
+    .bottom-bar button {
+      padding: 10px 20px;
+      font-size: 16px;
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      cursor: pointer;
+    }
+
+    .bottom-bar button:hover {
+      background-color: #45a049;
+    }
+  </style>
+</head>
+<body>
+
+  <div style="padding: 20px;">
+    <p>Your content goes here...</p>
+    <p>Scroll down to see the input fixed at the bottom.</p>
+  </div>
+
+  <div class="bottom-bar">
+    <input type="text" placeholder="Type a message..." />
+    <button type="submit">Send</button>
+  </div>
+
+  
+  <script src="https://cdn.socket.io/4.8.1/socket.io.min.js" 
+  integrity="sha384-mkQ3/7FUtcGyoppY6bz/PORYoGqOl7/aSUMn2ymDOJcapfS6PHqxhRTMh1RR0Q6+"
+   crossorigin="anonymous"></script>
+  
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+

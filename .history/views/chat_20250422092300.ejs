@@ -1,0 +1,287 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Chat Here</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      display: flex;
+      flex-direction: column;
+      height: 100vh;
+      background-color: #f0f2f5;
+    }
+
+    header {
+      padding: 1rem;
+      background-color: #4a90e2;
+      color: white;
+      text-align: center;
+      font-size: 1.5rem;
+      font-weight: bold;
+    }
+
+    main {
+      flex: 1;
+      padding: 1rem;
+      overflow-y: auto;
+      margin-bottom: 70px; /* space for the fixed input bar */
+    }
+
+    .chat-input-container {
+      display: flex;
+      padding: 10px;
+      background-color: white;
+      border-top: 1px solid #ccc;
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+    }
+
+    .chat-input {
+      flex: 1;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 20px;
+      font-size: 1rem;
+      outline: none;
+    }
+
+    .submit-button {
+      padding: 10px 20px;
+      margin-left: 10px;
+      background-color: #4a90e2;
+      color: white;
+      border: none;
+      border-radius: 20px;
+      cursor: pointer;
+      font-size: 1rem;
+      transition: background-color 0.3s ease;
+    }
+
+    .submit-button:hover {
+      background-color: #357ab8;
+    }
+  </style>
+</head>
+<body>
+  <header>Chat Here</header>
+
+
+  <form action="" method="post">
+
+  <div class="chat-input-container">
+    <input type="text" class="chat-input" placeholder="Type your message..." />
+    <button class="submit-button">Submit</button>
+  </div>
+
+</form>
+
+  <script src="https://cdn.socket.io/4.8.1/socket.io.min.js" 
+    integrity="sha384-mkQ3/7FUtcGyoppY6bz/PORYoGqOl7/aSUMn2ymDOJcapfS6PHqxhRTMh1RR0Q6+" 
+    crossorigin="anonymous">
+  </script>
+
+
+  <script>
+
+    
+    const socket=io();
+    socket.emit("join room");
+    socket.on("joined",function(roomname)
+
+  {
+    console.log(`you are joined to the ${roomname}`)
+  })
+
+   
+  </script>
+  
+
+
+</body>
+</html> -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Chat Here</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      display: flex;
+      flex-direction: column;
+      height: 100vh;
+      background-color: #f0f2f5;
+    }
+
+    header {
+      padding: 1rem;
+      background-color: #4a90e2;
+      color: white;
+      text-align: center;
+      font-size: 1.5rem;
+      font-weight: bold;
+    }
+
+    main {
+      flex: 1;
+      padding: 1rem;
+      overflow-y: auto;
+      margin-bottom: 70px;
+    }
+
+    .message {
+      max-width: 60%;
+      margin: 8px 0;
+      padding: 10px 15px;
+      border-radius: 20px;
+      position: relative;
+      font-size: 0.95rem;
+      display: inline-block;
+    }
+
+    .sent {
+      background-color: #DCF8C6;
+      align-self: flex-end;
+      margin-left: auto;
+    }
+
+    .received {
+      background-color: #fff;
+      align-self: flex-start;
+      margin-right: auto;
+    }
+
+    .timestamp {
+      font-size: 0.7rem;
+      color: gray;
+      text-align: right;
+      margin-top: 5px;
+    }
+
+    .status {
+      font-size: 0.75rem;
+      color: #4a90e2;
+      margin-left: 8px;
+    }
+
+    .chat-input-container {
+      display: flex;
+      padding: 10px;
+      background-color: white;
+      border-top: 1px solid #ccc;
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+    }
+
+    .chat-input {
+      flex: 1;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 20px;
+      font-size: 1rem;
+      outline: none;
+    }
+
+    .submit-button {
+      padding: 10px 20px;
+      margin-left: 10px;
+      background-color: #4a90e2;
+      color: white;
+      border: none;
+      border-radius: 20px;
+      cursor: pointer;
+      font-size: 1rem;
+      transition: background-color 0.3s ease;
+    }
+
+    .submit-button:hover {
+      background-color: #357ab8;
+    }
+  </style>
+</head>
+<body>
+  <header>Chat Here</header>
+
+  <main id="chat-box">
+    <!-- Example messages -->
+    <div class="message received">
+      Hello! 👋
+      <div class="timestamp">10:01 AM</div>
+    </div>
+    <div class="message sent">
+      Hi there! How are you? 😄
+      <div class="timestamp">10:02 AM <span class="status">✓✓</span></div>
+    </div>
+  </main>
+
+  <div class="chat-input-container">
+    <input type="text" class="chat-input" id="messageInput" placeholder="Type your message..." />
+    <button class="submit-button" onclick="sendMessage()">Send</button>
+  </div>
+
+  <script src="https://cdn.socket.io/4.8.1/socket.io.min.js"></script>
+  <script>
+    const socket = io();
+    socket.emit("join room");
+
+    socket.on("joined", function(roomname) {
+      console.log(`You joined room: ${roomname}`);
+    });
+
+    const chatBox = document.getElementById('chat-box');
+
+    function sendMessage() {
+      const input = document.getElementById('messageInput');
+      const msg = input.value;
+      if (!msg) return;
+
+      const bubble = document.createElement('div');
+      bubble.className = 'message sent';
+      const now = new Date();
+      bubble.innerHTML = `
+        ${msg}
+        <div class="timestamp">${now.getHours()}:${now.getMinutes()} <span class="status">✓</span></div>
+      `;
+      chatBox.appendChild(bubble);
+      chatBox.scrollTop = chatBox.scrollHeight;
+
+      input.value = '';
+    }
+  </script>
+</body>
+</html>

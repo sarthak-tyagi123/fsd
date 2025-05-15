@@ -53,6 +53,7 @@ a:hover {
 @media (max-width: 768px) {
   body {
     font-size: 1.1rem;
+    position: fixed;
   }
 
   h1{

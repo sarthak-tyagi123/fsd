@@ -158,7 +158,7 @@ p{
   }
 
   #message-container {
-/*   height:84vh; /* pura viewport height - chat form height */ */
+
   height:calc(100vh-80px);
   overflow-y: auto;
   padding: 1rem;

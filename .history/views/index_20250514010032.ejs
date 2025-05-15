@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Chating </title>
+  <!-- <link rel="stylesheet" href="./stylesheet\index.css"> -->
+   <style>
+    /* Global Styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Arial', sans-serif;
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background: linear-gradient(45deg, #6a11cb, #2575fc); /* Gradient background */
+  color: white;
+  font-size: 18px;
+  text-align: center;
+  overflow: hidden;
+}
+
+/* Center Container Styles */
+.center-container {
+  background: rgba(0, 0, 0, 0.6);
+  padding: 30px 50px;
+  border-radius: 15px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.center-container h1 {
+  font-size: 36px;
+  margin-bottom: 20px;
+  text-transform: uppercase;
+}
+
+.center-container a {
+  display: inline-block;
+  padding: 15px 30px;
+  background: #ff7e5f; /* Trending color */
+  color: white;
+  text-decoration: none;
+  border-radius: 25px;
+  font-size: 18px;
+  transition: background 0.3s ease, transform 0.3s ease;
+}
+
+/* Button Hover Effects */
+.center-container a:hover {
+  background: #feb47b; /* Hover color */
+  transform: scale(1.1);
+}
+
+/* Hover effect on container */
+.center-container:hover {
+  transform: scale(1.05);
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.6);
+}
+
+   </style>
+</head>
+<body>
+  <div class="center-container">
+    <h1>Welcome to the Chat</h1>
+    <a href="/chat">Start Chat </a>
+  </div>
+</body>
+</html>

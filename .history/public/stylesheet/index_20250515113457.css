@@ -1,0 +1,48 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  background-color:white;
+}
+
+body, html {
+  height: 100%;
+  font-family: Arial, sans-serif;
+  background-color: black;
+}
+
+/* Center everything perfectly in the middle */
+.center-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;         /* Full height of viewport */
+  width: 100vw;          /* Full width of viewport */
+  text-align: center;
+  padding: 40px;
+  background-color: black; /* Match background */
+}
+
+/* Title Styling */
+h1 {
+  font-size: 2.5rem;
+  color: white;
+  margin-bottom: 40px;
+  background-color: black;
+}
+
+/* Button Styling */
+a {
+  text-decoration: none;
+  color: white;
+  background-color: #4a90e2;
+  padding: 12px 24px;
+  border-radius: 8px;
+  font-size: 1.1rem;
+  transition: background-color 0.3s ease;
+}
+
+a:hover {
+  background-color: #357ab8;
+}

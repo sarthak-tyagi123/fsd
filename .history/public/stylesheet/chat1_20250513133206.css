@@ -1,0 +1,120 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+body {
+  background: linear-gradient(135deg, #1f1c2c, #928dab);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.chat-container {
+  width: 400px;
+  height: 600px;
+  background: #1e1e2f;
+  border-radius: 12px;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+  overflow: hidden;
+}
+
+/* Header */
+.chat-header {
+  background: #6c5ce7;
+  color: white;
+  text-align: center;
+  padding: 1rem;
+  font-size: 1.5rem;
+  font-weight: bold;
+  letter-spacing: 1px;
+}
+
+/* Message area */
+.message-container {
+  flex: 1;
+  overflow-y: auto;
+  padding: 1rem;
+  background: #2e2e3f;
+}
+
+/* Input area fixed at bottom */
+.chatform {
+  background: #26263f;
+  padding: 0.8rem;
+  border-top: 1px solid #444;
+}
+
+.input-container {
+  display: flex;
+  align-items: center;
+}
+
+.messagebox {
+  flex: 1;
+  padding: 0.8rem 1rem;
+  border-radius: 25px;
+  border: none;
+  background-color: #404060;
+  color: white;
+  font-size: 1rem;
+  outline: none;
+}
+
+.submit-button {
+  margin-left: 0.5rem;
+  padding: 0.8rem 1.2rem;
+  border-radius: 25px;
+  border: none;
+  background: linear-gradient(135deg, #6c5ce7, #a29bfe);
+  color: white;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: transform 0.2s ease, background 0.3s ease;
+}
+
+.submit-button:hover {
+  transform: scale(1.05);
+  background: linear-gradient(135deg, #5e54d3, #8e86f3);
+}
+
+/* Messages */
+.user-message-container,
+.received-message-container {
+  display: flex;
+  margin-bottom: 1rem;
+  animation: fadeIn 0.4s ease-in-out;
+}
+
+.user-message-container {
+  justify-content: flex-end;
+}
+
+.received-message-container {
+  justify-content: flex-start;
+}
+
+.user-message,
+.received-message {
+  max-width: 75%;
+  padding: 0.7rem 1rem;
+  border-radius: 16px;
+  font-size: 1rem;
+  word-wrap: break-word;
+}
+
+.user-message {
+  background: #6c5ce7;
+  color: white;
+  border-radius: 16px 16px 0 16px;
+}
+
+.received-message {
+  background: #44445c;
+  color: #f1f1f1;
+  border-radius: 16px 16px 16px 0;

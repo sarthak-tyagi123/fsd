@@ -1,0 +1,54 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Chating </title>
+  <link rel="stylesheet" href="./stylesheet\index.css">
+</head>
+<body>
+  <div class="center-container">
+    <h1>Welcome to the Chat</h1>
+    <a href="/chat">Start Chat </a>
+  </div>
+</body>
+</html> -->
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chat App</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="chat-container">
+        <div class="header">
+            <div class="profile">
+                <img src="profile-pic.jpg" alt="Profile Picture" class="profile-img">
+                <h2>John Doe</h2>
+            </div>
+        </div>
+
+        <div class="messages">
+            <div class="message sent">
+                <p>Hello, how are you?</p>
+                <span class="time">10:30 AM</span>
+            </div>
+            <div class="message received">
+                <p>I'm good, thanks! How about you?</p>
+                <span class="time">10:32 AM</span>
+            </div>
+            <!-- More messages go here -->
+        </div>
+
+        <div class="input-area">
+            <input type="text" id="message" placeholder="Type a message...">
+            <button onclick="sendMessage()">Send</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

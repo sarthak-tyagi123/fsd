@@ -1,0 +1,52 @@
+/* Reset and base styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+/* Body background */
+body {
+  height: 100vh;
+  background: linear-gradient(135deg, #1f1c2c, #928dab);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #fff;
+}
+
+/* Center container styling */
+.center-container {
+  background-color: #1e1e2f;
+  padding: 3rem 2rem;
+  border-radius: 16px;
+  text-align: center;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+  width: 300px;
+}
+
+/* Heading */
+.center-container h1 {
+  font-size: 1.8rem;
+  margin-bottom: 2rem;
+  color: #ffffff;
+}
+
+/* Start Chat button */
+.center-container a {
+  display: inline-block;
+  padding: 0.8rem 1.5rem;
+  background: linear-gradient(135deg, #6c5ce7, #a29bfe);
+  color: white;
+  border-radius: 25px;
+  font-size: 1rem;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  font-weight: 500;
+}
+
+.center-container a:hover {
+  background: linear-gradient(135deg, #5e54d3, #8e86f3);
+  transform: scale(1.05);
+}

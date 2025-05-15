@@ -1,0 +1,387 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Chating</title>
+  <link rel="stylesheet" href="/stylesheet\chat.css">
+</head>
+
+
+
+<body>
+  <header>Chat Here</header>
+
+  <div id="message-container">
+
+  </div>
+
+
+
+<form class="chatform">
+
+  <div>
+
+    <input type="text" class="messagebox" placeholder="Type your message..." />
+    <button class="submit-button">Submit</button>
+
+  </div>
+
+  
+</form>
+
+
+
+  <script src="https://cdn.socket.io/4.8.1/socket.io.min.js" 
+    integrity="sha384-mkQ3/7FUtcGyoppY6bz/PORYoGqOl7/aSUMn2ymDOJcapfS6PHqxhRTMh1RR0Q6+" 
+    crossorigin="anonymous">
+  </script>
+
+
+  <script>
+
+    let room;
+    const socket=io();
+    socket.emit("join room");
+    socket.on("joined",function(roomname)
+
+  {
+
+    room=roomname;
+
+  })
+
+
+
+
+
+
+
+    // writing the code for input box...............................
+
+
+
+
+  const chatform=document.querySelector(".chatform")
+  const messagebox=document.querySelector(".messagebox")
+  const messagecontainer=document.querySelector(".messagecontainer")
+  chatform.addEventListener("submit",function(event)
+
+  {
+  event.preventDefault();
+
+  socket.emit("message",{room:room , message:messagebox.value})
+
+  attachMessage(messagebox.value)
+
+  messagebox.value=""
+
+
+  })
+
+
+
+  // here message comming from the backend  display in the messagecontainer
+
+
+  socket.on("message",function(message)
+{
+
+    // here reciever message display
+    
+  receiveMessage(message)
+    
+})
+
+
+
+
+
+
+
+
+
+function attachMessage(message) {
+  const userMessageContainer = document.createElement('div');
+userMessageContainer.style.display = 'flex';
+userMessageContainer.style.marginTop = '0.5rem';
+userMessageContainer.style.marginBottom = '0.5rem';
+userMessageContainer.style.justifyContent = 'flex-end';
+
+const userMessageDiv = document.createElement('div');
+
+userMessageDiv.style.backgroundColor = '#3B82F6'; // Tailwind bg-blue-500
+userMessageDiv.style.color = 'white';             // text-white
+userMessageDiv.style.padding = '0.75rem';         // p-3 = 12px = 0.75rem
+userMessageDiv.style.borderRadius = '0.5rem';     // rounded-lg = 0.5rem
+userMessageDiv.style.maxWidth = '20rem';          // max-w-xs = 320px = 20rem
+
+                
+
+const userMessageText = document.createElement('p');
+userMessageText.textContent = message;
+
+userMessageDiv.appendChild(userMessageText);
+
+userMessageContainer.appendChild(userMessageDiv);
+
+document.getElementById('message-container').appendChild(userMessageContainer);
+
+document.querySelector("#message-container").scrollTop = document.querySelector("#message-container").scrollHeight;
+            }
+
+
+function receiveMessage(message) {
+const messageContainer = document.createElement('div');
+messageContainer.style.display = 'flex';               // flex
+messageContainer.style.marginTop = '0.5rem';           // my-2 = mt-2 + mb-2 = 0.5rem
+messageContainer.style.marginBottom = '0.5rem';
+messageContainer.style.justifyContent = 'flex-start';  // justify-start
+
+
+const messageDiv = document.createElement('div');
+messageDiv.style.backgroundColor = '#D1D5DB';           // bg-gray-300
+messageDiv.style.color = '#1F2937';                    // text-gray-800
+messageDiv.style.padding = '0.75rem';                  // p-3 = 12px = 0.75rem
+messageDiv.style.borderRadius = '0.5rem';              // rounded-lg = 0.5rem
+messageDiv.style.maxWidth = '20rem';                   // max-w-xs = 320px = 20rem
+
+
+const messageText = document.createElement('p');
+messageText.textContent = message;
+
+messageDiv.appendChild(messageText);
+
+messageContainer.appendChild(messageDiv);
+
+document.getElementById('message-container').appendChild(messageContainer);
+document.querySelector("#message-container").scrollTop = document.querySelector("#message-container").scrollHeight;
+}  
+
+
+
+  </script>
+  
+
+
+</body>
+</html>
+
+
+ -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chat Here</title>
+  <!-- <link rel="stylesheet" href="/stylesheet/chat.css"> -->
+
+  <style>
+    /* General reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Arial', sans-serif;
+}
+
+body {
+  background-color: #121212; /* Dark background for the whole page */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+/* Container for the whole chat application */
+.chat-container {
+  width: 400px;
+  height: 600px;
+  background-color: #1f1f1f; /* Dark theme container */
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+/* Header */
+.chat-header {
+  background-color: #181818; /* Dark header */
+  color: white;
+  padding: 1rem;
+  text-align: center;
+  font-size: 1.5rem;
+  font-weight: 600;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+/* Messages container */
+.message-container {
+  height: 480px;
+  overflow-y: auto;
+  padding: 1rem;
+  background-color: #2a2a2a; /* Slightly lighter background for the messages */
+}
+
+/* Styling for messages */
+.user-message-container,
+.received-message-container {
+  display: flex;
+  margin-bottom: 1rem;
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+.user-message-container {
+  justify-content: flex-end;
+}
+
+.received-message-container {
+  justify-content: flex-start;
+}
+
+.user-message,
+.received-message {
+  max-width: 70%;
+  padding: 12px;
+  border-radius: 10px;
+  font-size: 1rem;
+  line-height: 1.4;
+  word-wrap: break-word;
+}
+
+.user-message {
+  background-color: #3B82F6; /* Blue color for user messages */
+  color: white;
+  border-radius: 10px 10px 0 10px;
+}
+
+.received-message {
+  background-color: #444444; /* Dark gray for received messages */
+  color: #E0E0E0; /* Light text for received messages */
+  border-radius: 10px 10px 10px 0;
+}
+
+/* Input area */
+.input-container {
+  display: flex;
+  padding: 1rem;
+  border-top: 1px solid #333; /* Darker separator line */
+  background-color: #121212;
+}
+
+.messagebox {
+  flex: 1;
+  padding: 0.8rem;
+  border: 1px solid #555;
+  border-radius: 20px;
+  font-size: 1rem;
+  outline: none;
+  margin-right: 0.5rem;
+  background-color: #2a2a2a;
+  color: white;
+}
+
+.submit-button {
+  padding: 0.8rem 1.2rem;
+  background-color: #3B82F6;
+  color: white;
+  border: none;
+  border-radius: 20px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.submit-button:hover {
+  background-color: #2563EB;
+}
+
+/* Animation for new messages */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+  </style>
+</head>
+
+<body>
+  <div class="chat-container">
+    <header class="chat-header">
+      <h1>Chat Here</h1>
+    </header>
+
+    <div id="message-container" class="message-container">
+      <!-- Messages will be appended here -->
+    </div>
+
+    <form class="chatform">
+      <div class="input-container">
+        <input type="text" class="messagebox" placeholder="Type your message..." />
+        <button type="submit" class="submit-button">Send</button>
+      </div>
+    </form>
+  </div>
+
+  <script src="https://cdn.socket.io/4.8.1/socket.io.min.js" 
+    integrity="sha384-mkQ3/7FUtcGyoppY6bz/PORYoGqOl7/aSUMn2ymDOJcapfS6PHqxhRTMh1RR0Q6+" 
+    crossorigin="anonymous">
+  </script>
+
+  <script>
+    let room;
+    const socket = io();
+    socket.emit("join room");
+    socket.on("joined", function(roomname) {
+      room = roomname;
+    });
+
+    const chatform = document.querySelector(".chatform");
+    const messagebox = document.querySelector(".messagebox");
+    const messagecontainer = document.querySelector(".message-container");
+
+    chatform.addEventListener("submit", function(event) {
+      event.preventDefault();
+      socket.emit("message", { room: room, message: messagebox.value });
+      attachMessage(messagebox.value);
+      messagebox.value = "";
+    });
+
+    socket.on("message", function(message) {
+      receiveMessage(message);
+    });
+
+    function attachMessage(message) {
+      const userMessageContainer = document.createElement('div');
+      userMessageContainer.classList.add('user-message-container');
+
+      const userMessageDiv = document.createElement('div');
+      userMessageDiv.classList.add('user-message');
+      userMessageDiv.innerHTML = `<p>${message}</p>`;
+
+      userMessageContainer.appendChild(userMessageDiv);
+      messagecontainer.appendChild(userMessageContainer);
+      messagecontainer.scrollTop = messagecontainer.scrollHeight;
+    }
+
+    function receiveMessage(message) {
+      const messageContainer = document.createElement('div');
+      messageContainer.classList.add('received-message-container');
+
+      const messageDiv = document.createElement('div');
+      messageDiv.classList.add('received-message');
+      messageDiv.innerHTML = `<p>${message}</p>`;
+
+      messageContainer.appendChild(messageDiv);
+      messagecontainer.appendChild(messageContainer);
+      messagecontainer.scrollTop = messagecontainer.scrollHeight;
+    }
+  </script>
+</body>
+</html>
